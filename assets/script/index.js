@@ -37,7 +37,7 @@ function setAlarm () {
     let hourValue = hourInput.value;
     let minuteValue = minuteInput.value;
     
-    userAlarm.textContent = `${hourValue}:${minuteValue}`;
+    userAlarm.textContent = `${hourValue}:${minuteValue.padStart(2, '0')}`;
 
     hourInput.value = "";
     minuteInput.value = "";
@@ -65,6 +65,8 @@ function restart () {
     clock.style.animation = '';
     divRestartBtn.style.display = 'none';
     console.log('Hello world')
+    userAlarm.innerText = ''
+    bell.style.visibility = 'hidden';
     audio.pause();
 }
 
