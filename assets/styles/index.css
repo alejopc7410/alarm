@@ -1,14 +1,121 @@
 @charset "utf-8";
+@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,500;0,600;1,400;1,500;1,600&display=swap');
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    outline: none;
     border-style: none;
     vertical-align: baseline;
+}
+
+body {
+    background-color: #1A202C;
 }
 
 .container {
     width: min(100% - 30px, 1080px);
     margin-inline: auto;
+}
+
+.container section, form {
+    width: 100%;
+}
+
+.clock, .alarm-input {
+    display: grid;
+    place-items: center;
+}
+
+.flexbox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.clock p {
+    font-family: 'Jost', sans-serif;
+    color: #f14542;
+    font-size: 9em;
+    letter-spacing: 0.1em;
+}
+
+form {
+    gap: 0.5em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
+input[type=text] {
+    width: 7em;
+    height: 3em;
+    border-radius: 1em;
+    text-align: center;
+    color: #fff;
+    font-family: 'Jost', sans-serif;
+    background-color: #333d50;
+    
+}
+
+.submit-button {
+    width: 7em;
+    height: 3em;
+    border-radius: 1em;
+    margin-left: 1em;
+    font-family: 'Jost', sans-serif;
+    cursor: pointer;
+    color: #fff;
+    background-color: #f14542;
+}
+
+form div {
+    display: none;
+}
+
+.restart-button {
+    width: 7em;
+    height: 3em;
+    border-radius: 1em;
+    margin-left: 1em;
+    font-family: 'Jost', sans-serif;
+    cursor: pointer;
+    color: #fff;
+    background-color: transparent;
+    border: 2px solid #f14542;
+}
+
+input[type=text]:focus {
+    border: 2px solid #009D5E;
+}
+
+input[type=text]:nth-child(2) {
+    margin-left: 1em;
+}
+
+.user-alarm {
+    margin: 0.5em 0 0.5em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
+.user-alarm i {
+    color: #fff;
+    visibility: hidden;
+    margin-right: 1.6em;
+}
+
+.user-alarm p {
+    color: #fff;
+    font-family: 'Jost', sans-serif;
+}
+
+.alarm-input {
+    margin-top: 1em;
 }

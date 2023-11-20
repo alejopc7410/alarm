@@ -5,23 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alarm</title>
     <link rel="stylesheet" href="./assets/styles/index.css" media="all">
-    <script src="./assets/script/index.js" refer></script>
+    <script src="./assets/script/index.js" defer></script>
     <link rel="shortcut icon" href="./img/3d-alarm-icon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
     <main>
-        <div class="container">
+        <div class="container flexbox">
             <section class="clock">
                 <p></p>
             </section>
             <section class="user-alarm">
-                <p></p>
+                <i class="fa-solid fa-bell"></i><p></p>
             </section>
             <section class="alarm-input">
                 <form>
-                    <input type="text">
-                    <input type="text">
-                    <button class="submit-button"></button>
+                    <input type="text" placeholder="HH" maxlength="2">
+                    <input type="text" placeholder="MM" maxlength="2">
+                    <button type="button" class="submit-button">SET ALARM</button>
+                    <div><button type="button" class="restart-button">RESTART</button></div>
                 </form>
             </section>
         </div>
