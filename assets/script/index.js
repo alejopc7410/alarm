@@ -26,7 +26,6 @@ const restartBtn = select('.restart-button');
 const divRestartBtn = select('form div')
 let audio = select('.audio');
 let alarm = '';
-userAlarm.textContent = alarm;
 
 function setAlarm () {
     if (validation() === false) {
