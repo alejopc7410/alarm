@@ -24,9 +24,9 @@ const submitBtn = select('.submit-button');
 const bell = select('.user-alarm i');
 const restartBtn = select('.restart-button');
 const divRestartBtn = select('form div')
-let audio = new Audio('./assets/audio/alarm.mp3');
+let audio = select('.audio');
 let alarm = '';
-audio.type = 'audio/mp3';
+userAlarm.textContent = alarm;
 
 function setAlarm () {
     if (validation() === false) {
@@ -48,12 +48,13 @@ function setAlarm () {
         userAlarm.innerText = 'Alarm will sound in 24 hours'
         setTimeout(() => {
             userAlarm.innerText = alarm
+            setInterval(executeAlarm, 1000)
         }, 60000)
-        clearInterval(checkAlarm)
-    } 
-    const checkAlarm = setInterval(executeAlarm, 1000)
-}
+    } else {
+        setInterval(executeAlarm, 1000)
+    }
 
+}
 function validation() {
     if (
         hourInput.value == "" || 
@@ -73,7 +74,6 @@ function restart () {
     clock.style.color = '';
     clock.style.animation = '';
     divRestartBtn.style.display = 'none';
-    console.log('Hello world')
     userAlarm.innerText = ''
     bell.style.visibility = 'hidden';
     audio.pause();
@@ -87,6 +87,7 @@ function executeAlarm() {
         clock.style.animationDuration = '2s';
         userAlarm.textContent = '';
         bell.style.visibility = 'hidden';
+        setTimeout(restart, 60000);
     }
 }
 
