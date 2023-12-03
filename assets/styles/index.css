@@ -49,6 +49,7 @@ form {
     justify-content: center;
     align-items: center;
     flex-direction: row;
+    position: relative;
 }
 
 input[type=text] {
@@ -74,6 +75,8 @@ input[type=text] {
 }
 
 form div {
+    position: absolute;
+    right: 16.5em;
     display: none;
 }
 
@@ -93,7 +96,7 @@ input[type=text]:focus {
     border: 2px solid #009D5E;
 }
 
-input[type=text]:nth-child(2) {
+.minutes {
     margin-left: 1em;
 }
 
@@ -118,4 +121,6 @@ input[type=text]:nth-child(2) {
 
 .alarm-input {
     margin-top: 1em;
+    display: flex;
+    position: relative;
 }

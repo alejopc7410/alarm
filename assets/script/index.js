@@ -18,13 +18,14 @@ function onEvent(selector, event, callback) {
 
 const clock = select('.clock p');
 const userAlarm = select('.user-alarm p');
-const hourInput = select('.alarm-input input[type=text]:nth-child(1)');
-const minuteInput = select('.alarm-input input[type=text]:nth-child(2)');
+const hourInput = select('.hour');
+const minuteInput = select('.minutes');
 const submitBtn = select('.submit-button');
 const bell = select('.user-alarm i');
 const restartBtn = select('.restart-button');
 const divRestartBtn = select('form div')
 let audio = new Audio('./assets/audio/alarm.mp3');
+let alarm = '';
 audio.type = 'audio/mp3';
 
 function setAlarm () {
@@ -33,16 +34,24 @@ function setAlarm () {
         return false;
     }
     
-
     let hourValue = hourInput.value;
     let minuteValue = minuteInput.value;
     
-    userAlarm.textContent = `${hourValue}:${minuteValue.padStart(2, '0')}`;
-
+    alarm = `${hourValue}:${minuteValue.padStart(2, '0')}`
+    userAlarm.textContent = alarm;
+    
     hourInput.value = "";
     minuteInput.value = "";
     bell.style.visibility = 'visible';
     divRestartBtn.style.display = 'block';
+    if (clock.textContent === userAlarm.textContent) {
+        userAlarm.innerText = 'Alarm will sound in 24 hours'
+        setTimeout(() => {
+            userAlarm.innerText = alarm
+        }, 60000)
+        clearInterval(checkAlarm)
+    } 
+    const checkAlarm = setInterval(executeAlarm, 1000)
 }
 
 function validation() {
@@ -70,14 +79,7 @@ function restart () {
     audio.pause();
 }
 
-setInterval(() => {
-    let time = new Date();
-    let hours = time.getHours().toString().padStart(2, '0');
-    let minutes = time.getMinutes().toString().padStart(2, '0');
-    clock.textContent = `${hours}:${minutes}`;
-}, 1000)
-
-setInterval(() => {
+function executeAlarm() {
     if (clock.textContent === userAlarm.textContent) {
         audio.play();
         clock.style.color = '#04d907';
@@ -85,8 +87,16 @@ setInterval(() => {
         clock.style.animationDuration = '2s';
         userAlarm.textContent = '';
         bell.style.visibility = 'hidden';
-    } 
-}, 1000);
+    }
+}
+
+setInterval(() => {
+    let time = new Date();
+    let hours = time.getHours().toString().padStart(2, '0');
+    let minutes = time.getMinutes().toString().padStart(2, '0');
+    clock.textContent = `${hours}:${minutes}`;
+}, 1000)
+
 
 onEvent(submitBtn, 'click', setAlarm);
 onEvent(restartBtn, 'click', restart);
